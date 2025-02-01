@@ -66,6 +66,8 @@ Le hook useDebounce retarde l'exécution de la fonction de recherche pour évite
 
 Lorsque l'utilisateur saisit un terme de recherche, celui-ci est d'abord stocké dans l'état local, puis après un délai de 500ms, il est envoyé à la fonction onSearch.
 
+La principale difficulté était de comprendre comment implémenter correctement le debounce pour éviter les requêtes excessives. La solution a été de créer un hook personnalisé qui gère le délai avant de mettre à jour la valeur.
+
 [Ajoutez vos captures d'écran]
 ```
 
