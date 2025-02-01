@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../App";
 import useProductSearch from "../hooks/useProductSearch";
+import ProductSearch from "./ProductSearch";
 
 const ProductList = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   // TODO: Exercice 2.1 - Utiliser le LanguageContext pour les traductions
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const {
     products,
@@ -17,7 +20,7 @@ const ProductList = () => {
     totalPages,
     nextPage,
     previousPage,
-  } = useProductSearch();
+  } = useProductSearch(searchTerm);
 
   if (loading)
     return (
@@ -37,6 +40,7 @@ const ProductList = () => {
 
   return (
     <div>
+      <ProductSearch onSearch={setSearchTerm} />
       {/* TODO: Exercice 4.1 - Ajouter le bouton de rechargement */}
       <button onClick={reload} className="btn btn-primary mb-4">
         Recharger les produits
